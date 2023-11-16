@@ -83,6 +83,11 @@ dependencies {
     implementation(files("libs/itextg-5.5.10.jar"))
     implementation(files("libs/adxf.jar"))
 
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+
+    implementation("androidx.compose.material:material:1.5.3")
+
+
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

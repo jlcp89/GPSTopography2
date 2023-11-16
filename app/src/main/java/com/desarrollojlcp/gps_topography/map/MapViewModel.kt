@@ -4,14 +4,27 @@ import android.app.Application
 import android.content.SharedPreferences
 import android.os.Environment
 import android.widget.Toast
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.desarrollojlcp.gps_topography.map.model.AutocompleteResult
 import com.desarrollojlcp.gps_topography.map.model.Estacion
 import com.desarrollojlcp.gps_topography.map.model.reports.GenerarArchivos
 import com.desarrollojlcp.gps_topography.map.model.Poligono
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.libraries.places.api.Places
+import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.api.net.FetchPlaceRequest
+import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest
+import com.google.android.libraries.places.api.net.PlacesClient
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -220,6 +233,10 @@ class MapViewModel (application: Application) : AndroidViewModel(application) {
             }
         }
     }
+
+
+
+
 
 
 

@@ -18,6 +18,8 @@ import androidx.compose.ui.Modifier
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.desarrollojlcp.gps_topography.db.ConexionSQLiteHelper
+import com.desarrollojlcp.gps_topography.db.Utilidades
 import com.desarrollojlcp.gps_topography.ui.theme.GPSTopographyTheme
 import com.google.android.libraries.places.api.Places
 import java.io.IOException
@@ -26,6 +28,10 @@ import java.util.Properties
 
 class MainActivity : ComponentActivity() {
     private val viewModel: MapViewModel by viewModels()
+
+    var helper: ConexionSQLiteHelper = ConexionSQLiteHelper(this, Utilidades.NOMBRE_BD, null, Utilidades.VERSION_BD)
+
+
     companion object {
         const val PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1234
         const val PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 12345
@@ -34,6 +40,7 @@ class MainActivity : ComponentActivity() {
     private val locationPermissionGranted = mutableStateOf(false)
 
     private fun getProperty(key: String): String? {
+
         // Obtener el contexto de la actividad
         val context: Context = this
 
@@ -54,6 +61,10 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getProperty("MAPS_API_KEY")?.let { Places.initialize(applicationContext, it) }
+
+        helper = ConexionSQLiteHelper(this, Utilidades.NOMBRE_BD, null, Utilidades.VERSION_BD)
+
+
         installSplashScreen()
         setContent {
             GPSTopographyTheme {
