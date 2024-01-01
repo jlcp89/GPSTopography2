@@ -88,22 +88,6 @@ fun ColumnaPrincipal() {
         MiMapaGoogle()
     }
 
-    // Agregar un BottomAppBar con botones para guardar y cargar
-    BottomAppBar(
-        content = {
-            Row(
-                horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-            ) {
-                // Botón para guardar
-                Icon(imageVector = Icons.Outlined.Create, contentDescription = "Guardar")
-                // Botón para cargar
-                Icon(imageVector = Icons.Outlined.List, contentDescription = "Cargar")
-            }
-        }
-    )
 
 }
 
